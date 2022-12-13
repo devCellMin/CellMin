@@ -2,20 +2,13 @@
 // Before Start -> npm install mysql
 
 const mysql = require("mysql");
+require('dotenv').config();
 
 const conn = mysql.createConnection({
-    user: "root",
-    password: "!@#alstp9753",
-    database: "db_cellmin"
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME
 });
-
-// const noticeDB = "NOTICE_TB";
-// const freeBoardDB = "FREE_BOARD_TB";
-// const galleryDB = "GALLERY_TB";
-// const youTubeDB = "YOU_TUBE_TB";
-// const portfolioDB = "PORTFOLIO_TB";
-// const itDevDB = "IT_DEV_TB";
-// const sourceDB = "SOURCE_CODE_TB";
 
 function queryStart(sql, dbname) {
     conn.query(`Drop Table if Exists ${dbname}`, (err, result)=> {
@@ -140,44 +133,12 @@ const TB_Create = {
             )`;
         queryStart(sql, tbList.sourceTB);
     }
-
 }
 
+// // Create All DB
 // Object.keys(tbList).forEach(tbname => {
 //     TB_Create[tbList[tbname]]();
 // })
 
-TB_Create[tbList["portfolioTB"]]();
-TB_Create[tbList["sourceTB"]]();
-
-// // Reset Data from Board Table
-// let start = 'Drop Table if Exists ContentTest';
-// conn.query(start, (err, result)=> {
-//     console.log(result);
-// });
-
-// // Create Table Board
-// let sql = `Create table ContentTest
-//             (
-//                 cont_no INT PRIMARY KEY AUTO_INCREMENT, 
-//                 cont_lang VARCHAR(50), 
-//                 cont_title VARCHAR(50), 
-//                 cont_date VARCHAR(255),
-//                 cont_view int,
-//                 cont_txt VARCHAR(455)
-//             )`;
-
-// conn.query(sql, function(err, result) {
-//     if(!err) {
-//         console.log(result);
-
-//         // Board 테이블 내용 출력
-//         conn.query("desc Board", function(err, result) {
-//             if(!err) {console.log(result);}
-//             else {console.log(err);}
-//         });
-
-//     } else {
-//         console.log(err);
-//     }
-// });
+// // Create Only One DB
+// TB_Create[tbList["portfolioTB"]]();
