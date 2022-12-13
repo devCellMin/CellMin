@@ -1,0 +1,420 @@
+/* Default Setting */
+:root {
+    --text-color: #020715;
+    --border-color: lightgray;
+    --button-color: lightblue;
+    --btnDuplicate-color: skyblue;
+}
+*, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+input[type=button] {
+    cursor: pointer;
+}
+
+input {
+    border: 1px solid gray;
+    padding: 5px;
+}
+
+/* Header */
+header {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.top_menu_wrap {
+    width: 1280px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 5px;
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.top_menu_wrap>a {
+    width: 230px;
+    height: 100px;
+    margin-right: 19%;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+}
+
+.top_menu_wrap>a>img {
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+    background-color: #FFFFFF;
+    border-radius: 40px;
+}
+
+.top_menu_wrap>a>span {
+    font-size: 30px;
+    line-height: 80px;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.top_menu_wrap>ul {
+    width: 45%;
+    display: flex;
+    list-style: none;
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+
+.top_menu_wrap>ul>li {
+    font-size: 20px;
+    line-height: 80px;
+}
+
+.top_menu_wrap>ul>li>a {
+    text-align: left;
+    height: 100%;
+    padding: 10px 35px;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Login Part */
+#login-wrap {
+    width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+#login-wrap>h1 {
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#login-wrap>h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#login-wrap>span {
+    font-size: 17px;
+}
+
+#login_box {
+    width: 800px;
+    height: 400px;
+    margin: 40px auto 20px auto;
+    border: 3px solid var(--border-color);
+}
+
+#login_box>h2 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+#login_box>input {
+    width: 350px;
+    height: 40px;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+#login_box>input[type=button] {
+    margin-top: 20px;
+    height: 50px;
+    border: 2px solid gray;
+    background-color: var(--button-color);
+}
+
+#members-etc {
+    list-style: none;
+    display: flex;
+    width: 45%;
+    margin: 0 auto;
+    margin-top: 10px;
+    text-align: center;
+}
+
+#members-etc>li {
+    font-size: 17px;
+    padding: 5px 0px;
+}
+
+#members-etc>li>a {
+    color: var(--text-color);
+    padding: 0 20px;
+    width: 100%;
+    text-decoration: none;
+}
+
+#members-etc>li:not(:last-child) >a {
+    border-right: 1px solid var(--border-color);
+}
+
+/* Sign Up Part */
+#signUp-wrap {
+    width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+#signUp-wrap>h1 {
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#signUp-wrap>h2 {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+#signUp_box {
+    width: 800px;
+    padding-bottom: 30px;
+    margin: 40px auto 20px auto;
+    border: 3px solid var(--border-color);
+}
+
+#signUp_box>h2 {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+#getinfo-box {
+    margin: 0 auto;
+    width: 60%;
+    border-spacing: 5px;
+}
+
+#getinfo-box>li {
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#getinfo-box>li>p {
+    width: 150px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+#getinfo-box>li>input[type=text],
+#getinfo-box>li>input[type=password] {
+    width: 40%;
+    height: 30px;
+}
+
+#getinfo-box>li>input[type=button] {
+    padding: 3px 7px;
+    margin-left: 10px;
+    border: 2px solid gray;
+    background-color: var(--btnDuplicate-color);
+}
+
+#pwdCheck-index {
+    font-size: 15px;
+    color: gray;
+}
+
+#btnSignUp {
+    padding: 5px 10px;
+    border: 2px solid gray;
+    background-color: var(--button-color);
+}
+
+/* Find Member Info Part */
+#findinfo-wrap {
+    width: 1280px;
+    margin: 0 auto;
+    text-align: center;
+    padding-bottom: 60px;
+}
+
+#findinfo-wrap>h1 {
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#findinfo-wrap>span {
+    font-size: 18px;
+}
+
+#findInfo-box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+#findID_box, 
+#findPWD_box {
+    width: 500px;
+    height: 400px;
+    margin: 40px auto 20px auto;
+    border: 3px solid var(--border-color);
+}
+
+#findID_box>h2, 
+#findPWD_box>h2 {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+#findID_box>input,
+#findPWD_box>input {
+    width: 350px;
+    height: 40px;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+#findID_box>input[type=button],
+#findPWD_box>input[type=button] {
+    margin-top: 20px;
+    height: 50px;
+    border: 2px solid gray;
+    background-color: var(--button-color);
+}
+
+footer {
+    width: 100%;
+}
+
+footer>p {
+    background-color: #020715;
+    color: var(--text-color);
+    font-size: 13px;
+    text-align: center;
+    padding: 30px 0 70px;
+}
+
+@media screen and (max-width: 1280px) {
+    .top_menu_wrap {
+        width: 100%;
+        height: 70px;
+    }
+    .top_menu_wrap>a>img{
+        width: 50px;
+        height: 50px;
+    }
+    .top_menu_wrap>a>span{
+        line-height: 50px;
+    }
+
+    .top_menu_wrap>ul {
+        display: none;
+    }
+
+    #login-wrap,
+    #signUp-wrap,
+    #findinfo-wrap {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #findInfo-box,
+    #findID_box,
+    #findPWD_box {
+        width: 100%;
+    }
+
+    #findID_box>input,
+    #findPWD_box>input {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    #findPWD_box {
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #login-wrap>h1,
+    #signUp-wrap>h1,
+    #findinfo-wrap>h1 {
+        font-size: 30px;
+    }
+
+    #login-wrap>h2,
+    #signUp-wrap>h2 {
+        font-size: 20px;
+    }
+
+    #login-wrap>span,
+    #findinfo-wrap>span {
+        font-size: 15px;
+    }
+
+    #login_box,
+    #signUp_box {
+        width: 100%;
+    }
+
+    #login_box>h2,
+    #signUp_box>h2 {
+        font-size: 20px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    #login_box>input,
+    #getinfo-box {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    #members-etc {
+        display: block;
+        width: 80%;
+    }
+
+    #members-etc>li:not(:last-child)>a {
+        border: none;
+    }
+
+    #getinfo-box>li {
+        display: block;
+        text-align: left;
+    }
+
+    #getinfo-box>li>p {
+        display: none;
+        width: 100%;
+        text-align: left;
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    #hidden-li {
+        display: none;
+    }
+    
+    #getinfo-box>li>input[type=text],
+    #getinfo-box>li>input[type=password] {
+        width: 70%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+}

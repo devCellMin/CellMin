@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>공지사항 < CellMin</title>
+        <link rel="stylesheet" href="/public/css/content.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/74b74b886a.js" crossorigin="anonymous"></script>
+        <script src="/public/js/content.js" defer></script>
+        <script src="/public/js/view.js" defer></script>
+    </head>
+    <body>
+        <%- include('../header.html') %>
+
+        <div class="content_wrap">
+            <div class="content-header">
+                <!-- Page Name -->
+                <h3>공지사항</h3>
+            </div>
+            <aside class="leftmenubar">
+                <h2>공지사항</h2>
+                <ul>
+                    <li><a href="/board/list/notice/10" class="current">공지사항</a></li>
+                </ul>
+            </aside>
+            <section id="cont" class="content">
+                <<div class="view-wrap">
+                    <div>
+                        <input type="hidden" id="cont_no" name="cont_no" value="<%= result.NOTICE_NO_PK %>">
+                        <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
+                        <input type="hidden" id="isAuther" name="isAuther" value="<%= SD.kind %>">
+                        <input type="hidden" id="boardName" value="<%= name %>">
+                        <p id="cont_tit">제목 : <%= result.NOTICE_TITLE %></p>
+                    </div>
+                    <div id="selLang">
+                        <%  const kind = {
+                                "notice":"공지사항"
+                            };
+                        %>
+                        <p><span>구분 : </span><%= kind[result.NOTICE_KIND] %></p>
+                    </div>
+                    <div id="content_txtview"><%- result.NOTICE_TEXT %></div>
+                </div>
+            <%  if(SD.kind == "ADMIN") { %>
+                <div class="btn_wrap" id="btn_wrap">
+                    <input type="button" id="btnDelete" class="inp_btn" value="삭제">
+                    <input type="button" id="btnWrite" class="inp_btn" value="수정">
+                </div>
+            <%  } %>
+            </section>
+        </div>
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+    </body>
+</html>

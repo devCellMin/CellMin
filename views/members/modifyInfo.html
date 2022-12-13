@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>회원정보변경 < CellMin</title>
+        <link rel="stylesheet" href="/public/css/etc.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/public/js/modifyInfo.js"></script>
+    </head>
+    <body>
+        <header>
+            <!-- Header Part -->
+            <div class="top_menu_wrap">
+                <a href="/">
+                    <img src="/public/img/logo.png" alt="LOGO">
+                    <span>CellMin</span>
+                </a>
+                <ul>
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/signup">회원가입</a></li>
+                    <li><a href="/findinfo">아이디 / 비밀번호 찾기</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="signUp-wrap">
+            <h1>회원정보변경</h1>
+            <h2>회원정보변경 페이지 입니다.</h2>
+            <br>
+            
+            <form id="signUp_box" method="post">
+                <h2>회원정보변경</h2>
+                <ul id="getinfo-box">
+                    <li>
+                        <p>아이디 : </p>
+                        <input type="text" id="userID" name="userID" value="<%= result.id %>" readonly>
+                    </li>
+                    <li>
+                        <p>이름 : </p>
+                        <input type="text" id="userName" name="userName" value="<%= result.name %>" readonly>
+                    </li>
+                    <li>
+                        <p>비밀번호 : </p>
+                        <input type="password" name="userPWD" id="userPWD" placeholder="비밀번호">
+                    </li>
+                    <li>
+                        <p>비밀번호 확인 : </p>
+                        <input type="password" name="pwdCheck" id="pwdCheck" placeholder="비밀번호 확인">
+                    </li>
+                    <li>
+                        <p id="hidden-li">&nbsp;</p>
+                        <span id="pwdCheck-index">비밀번호 확인</span>
+                    </li>
+                    <li>
+                        <p>이메일 : </p>
+                        <input type="text" id="userEmail" name="userEmail" value="<%= result.email %>" readonly>
+                    </li>
+                </ul>
+                <input type="button" id="btnSignUp" value="변경하기">
+            </form>
+        </div>
+
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+    </body>
+</html>

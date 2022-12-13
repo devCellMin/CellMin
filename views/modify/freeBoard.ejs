@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>자유게시판 < CellMin</title>
+        <link rel="stylesheet" href="/public/css/content.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/74b74b886a.js" crossorigin="anonymous"></script>
+        <script src="/public/js/content.js" defer></script>
+        <script src="/public/js/summerNote.js" defer></script>
+        <script src="/public/js/modify.js"></script>
+        <!-- Summernote Lite Ver -->
+        <script src="/public/summurnote/summernote-lite.js"></script>
+        <script src="/public/summurnote/lang/summernote-ko-KR.js"></script>
+        <link rel="stylesheet" href="/public/summurnote/summernote-lite.css">
+    </head>
+    <body>
+        <%- include('../header.html') %>
+
+        <div class="content_wrap">
+            <div class="content-header">
+                <!-- Page Name -->
+                <h3>자유게시판</h3>
+            </div>
+            <aside class="leftmenubar">
+                <h2>커뮤니티</h2>
+                <ul>
+                    <li><a href="/board/list/free/10" class="current">자유게시판</a></li>
+                    <li><a href="/board/list/gallery/10">갤러리</a></li>
+                    <li><a href="/board/list/youTubeClip/10">Youtube Clip</a></li>
+                </ul>
+            </aside>
+            <section id="cont" class="content">
+                <form class="writeform" id="writeform" method="post" action="">
+                    <div class="write-wrap">
+                        <div>
+                            <input type="text" name="content_tit" id="content_tit" value="<%= result.FREE_BD_TITLE %>">
+                            <input type="hidden" name="free_no" value="<%= free_no %>">
+                            <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
+                            <input type="hidden" id="boardName" value="<%= name %>">
+                        </div>
+                        <textarea name="content_txt" id="content_txt"></textarea>
+                        <div class="btn_wrap">
+                            <input type="button" id="btnCancle" class="inp_btn" value="취소">
+                            <input type="button" id="btnModify" class="inp_btn" value="수정">
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+        
+        <script>
+            $(function() {
+                let data = '<%- result.FREE_BD_TEXT %>';
+                $('#content_txt').summernote('pasteHTML', data);
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Youtube Clip < CellMin</title>
+        <link rel="stylesheet" href="/public/css/content.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/74b74b886a.js" crossorigin="anonymous"></script>
+        <script src="/public/js/content.js" defer></script>
+        <script src="/public/js/list.js" defer></script>
+    </head>
+    <body>
+        <%- include('../header.html') %>
+
+        <div class="content_wrap">
+            <div class="content-header">
+                <!-- Page Name -->
+                <h3>Youtube Clip</h3>
+            </div>
+            <aside class="leftmenubar">
+                <h2>커뮤니티</h2>
+                <ul>
+                    <li><a href="/board/list/free/10">자유게시판</a></li>
+                    <li><a href="/board/list/gallery/10">갤러리</a></li>
+                    <li><a href="/board/list/youTubeClip/10" class="current">Youtube Clip</a></li>
+                </ul>
+            </aside>
+            <section id="cont" class="content">
+                <form class="listform" action="">
+                    <div class="search-wrap">
+                        <input type="hidden" id="authority" value="<%= results.pagedata.authority %>">
+                        <input type="hidden" id="boardName" value="<%= results.pagedata.name %>">
+                        <input type="hidden" id="items" value="<%= results.pagedata.items %>">
+                        <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
+                        <select name="searchCondition" id="searchCondition">
+                            <option value="allText">제목+내용</option>
+                            <option value="onlyTitle">제목</option>
+                            <option value="onlyCont">내용</option>
+                            <option value="onlywriter">글쓴이</option>
+                        </select>
+                        <input autocomplete="off" type="text" class="inptype" id="searchKeyword" name="searchKeyword" value="" placeholder="검색어를 입력하세요" title="검색어 입력">
+                        <a  type="button" class="btn_search" id="btn_search">
+                            검색
+                            <i class="fa-solid fa-magnifying-glass icon-search"></i>
+                        </a>
+                    </div>
+                    <p class="total-txt">
+                        <i class="fa-regular fa-file-lines ttIcon"></i>
+                        전체 : 
+                        <span class="fcCont"><%= results.pagedata.total %></span>
+                        건 [<%= results.pagedata.cpage %>/<%= results.pagedata.tpage %>페이지]
+                    </p>
+                    <div class="selectPageSize">
+                        <select id="selPageSize" name="pageUnit" class="opt01" title="게시글 수량">
+                            <option value="10">10개씩 보기</option>
+                            <option value="20">20개씩 보기</option>
+                            <option value="30">30개씩 보기</option>
+                        </select>
+                        <a id="btnsizeChange" class="inp_btn"><span>확인</span></a>
+                        <a id="writeCont" href="/board/write/youTubeClip/<%= results.pagedata.items %>" class="inp_btn"><span>글쓰기</span></a>
+                    </div>
+                    <div class="contentsTB-type01">
+                        <table>
+                            <caption>자주하는질문게시판으로 번호, 민원분류, 제목, 작성일, 조회수, 첨부를 나타내는 표</caption>
+                            <colgroup>
+                                <col width="68px">
+                                <col width="150px">
+                                <col>
+                                <col width="110px">
+                                <col width="110px">
+                                <col width="68px">
+                            </colgroup>
+                            <thead>                    
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <!-- 게시판의 경우 글쓴이 -->
+                                    <th scope="col">글쓴이</th>
+                                    <th scope="col">제목</th>
+                                    <th scope="col">작성일</th>
+                                    <th scope="col">조회수</th>
+                                    <th scope="col">첨부</th>
+                                    
+                                </tr>                           
+                            </thead>
+                            <tbody>
+                            <% if(results["result"].length == 0) { %>
+                                <tr>
+                                    <td colspan="6"><span>저장된 데이터가 없습니다.</span></td>
+                                </tr>
+                            <% } %>
+
+                            <% results["result"].forEach(function(item, index) { %>
+                                <tr>
+                                    <td class="col-num">
+                                        <%= item.YOU_TUBE_NO_PK %>
+                                    </td>
+                                    <td class="col-num2">
+                                        <%= item.YOU_TUBE_USER %>
+                                    </td>
+                                    <td class="col-tit">
+                                        <a href="/board/view/youTubeClip/<%=item.YOU_TUBE_NO_PK %>"><%= item.YOU_TUBE_TITLE %></a>
+                                    </td>
+                                    <td class="col-date">
+                                        <%= item.YOU_TUBE_DATE%>
+                                    </td>
+                                    <td class="col-views">
+                                        <%= item.YOU_TUBE_VIEW_CNT %>
+                                    </td>
+                                    <td class="col-file">
+                                        
+                                    </td>
+                                </tr>
+                            <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="pagingPc">
+                        <%
+                        const pagedata = results.pagedata;
+
+                        if(pagedata.cpage == 2) { %>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>" class="prev">
+                                <i class="fa-solid fa-angle-left" title="이전 페이지로 이동" aria-label="이전 페이지로 이동"></i>
+                            </a>
+                    <%  } else if(pagedata.cpage > 1) { 
+                            let prev = pagedata.cpage - 1;%>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>" class="first">
+                                <i class="fa-solid fa-angles-left" title="첫 페이지로 이동" aria-label="첫 페이지로 이동"></i>
+                            </a>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= prev %>" class="prev">
+                                <i class="fa-solid fa-angle-left" title="이전 페이지로 이동" aria-label="이전 페이지로 이동"></i>
+                            </a>
+                    <% }; %>
+
+                    <ul>
+                    <%  let start = (pagedata.cpage % 10 == 0) ? +(parseInt(pagedata.cpage / 10)+"0")-9 : +(parseInt(pagedata.cpage / 10)+"0")+1;
+                        let end = (start + 10 < pagedata.tpage) ? +(start + 10) : pagedata.tpage;
+
+                        for(let i=start ; i < end+1 ; i++) { 
+                            if(i == pagedata.cpage) { %>
+                                <li class="on"><a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= i %>"><%= i %></a></li>
+                        <% } else { %>
+                            <li><a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= i %>"><%= i %></a></li>
+                        <% }} %>
+                    </ul> 
+
+                    <% let next = pagedata.cpage + 1; 
+                        if(pagedata.cpage < pagedata.tpage) { %>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= next %>" class="next">
+                                <i class="fa-solid fa-angle-right" title="다음 페이지로 이동" aria-label="다음 페이지로 이동"></i>
+                            </a>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= pagedata.tpage %>" class="last">
+                                <i class="fa-solid fa-angles-right" title="마지막 페이지로 이동" aria-label="마지막 페이지로 이동"></i>
+                            </a>
+                    <%  }; %>
+                    </div>
+
+                    <div class="pagination" id="pagingM">
+                    <%
+                        if(pagedata.cpage == 2) { %>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>" class="prev">
+                                <i class="fa-solid fa-angle-left" title="이전 페이지로 이동" aria-label="이전 페이지로 이동"></i>
+                            </a>
+                    <%  } else if(pagedata.cpage > 1) { 
+                            prev = pagedata.cpage - 1;%>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>" class="first">
+                                <i class="fa-solid fa-angles-left" title="첫 페이지로 이동" aria-label="첫 페이지로 이동"></i>
+                            </a>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= prev %>" class="prev">
+                                <i class="fa-solid fa-angle-left" title="이전 페이지로 이동" aria-label="이전 페이지로 이동"></i>
+                            </a>
+                    <% }; %>
+
+                    <ul>
+                    <%  start = (pagedata.cpage % 10 == 0) ? +(parseInt(pagedata.cpage / 10)+"0")-9 : +(parseInt(pagedata.cpage / 10)+"0")+1;
+                        end = (start + 5 < pagedata.tpage) ? +(start + 5) : pagedata.tpage;
+
+                        for(let i=start ; i < end+1 ; i++) { 
+                            if(i == pagedata.cpage) { %>
+                                <li class="on"><a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= i %>"><%= i %></a></li>
+                        <% } else { %>
+                            <li><a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= i %>"><%= i %></a></li>
+                        <% }} %>
+                    </ul> 
+
+                    <% next = pagedata.cpage + 1; 
+                        if(pagedata.cpage < pagedata.tpage) { %>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= next %>" class="next">
+                                <i class="fa-solid fa-angle-right" title="다음 페이지로 이동" aria-label="다음 페이지로 이동"></i>
+                            </a>
+                            <a href="/board/list/youTubeClip/<%= pagedata.items %>?page=<%= pagedata.tpage %>" class="last">
+                                <i class="fa-solid fa-angles-right" title="마지막 페이지로 이동" aria-label="마지막 페이지로 이동"></i>
+                            </a>
+                    <%  }; %>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+    </body>
+</html>

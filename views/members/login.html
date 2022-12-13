@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>로그인 < CellMin</title>
+        <link rel="stylesheet" href="/public/css/etc.css">
+    </head>
+    <body>
+        <header>
+            <!-- Header Part -->
+            <div class="top_menu_wrap">
+                <a href="/">
+                    <img src="/public/img/logo.png" alt="LOGO">
+                    <span>CellMin</span>
+                </a>
+                <ul>
+                    <li><a href="/login">로그인</a></li>
+                    <li><a href="/signup">회원가입</a></li>
+                    <li><a href="/findinfo">아이디 / 비밀번호 찾기</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <div id="login-wrap">
+            <h1>로그인</h1>
+            <h2>CellMin 블로그에 오신것을 환영합니다.</h2>
+            <span>로그인을 하시면 보다 다양한 서비스 이용이 가능합니다.</span>
+
+            <form id="login_box" method="post">
+                <h2>아이디 로그인</h2>
+                <input type="text" name="userID" id="userID" placeholder="아이디"><br>
+                <input type="password" name="userPWD" id="userPWD" placeholder="비밀번호"><br>
+                <input type="button" id="btnSubmit" value="로그인">
+
+                <ul id="members-etc">
+                    <li><a href="#">아이디 / 비밀번호 찾기</a></li>
+                    <li><a href="#">회원가입</a></li>
+                </ul>
+            </form>
+            <input type="hidden" id="msg" value="<%= msg %>">
+        </div>
+
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+
+        <script>
+            window.onload = function() {
+                if(msg.value != "") {
+                    alert(msg.value);
+                }
+
+                btnSubmit.onclick = function() {
+                    if(userID.value.length == 0) {
+                        alert('아이디를 입력하세요.');
+                        return;
+                    } else if(userPWD.value.length == 0) {
+                        alert('비밀번호를 입력하세요.');
+                        return;
+                    }
+                    //alert('클릭하셨습니다.');
+                    login_box.submit();
+                };
+
+            };
+        </script>
+    </body>
+</html>

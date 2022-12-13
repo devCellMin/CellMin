@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>소스코드 < CellMin</title>
+        <link rel="stylesheet" href="/public/css/content.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/74b74b886a.js" crossorigin="anonymous"></script>
+        <script src="/public/js/content.js" defer></script>
+        <script src="/public/js/summerNote.js" defer></script>
+        <script src="/public/js/modify.js"></script>
+        <!-- Summernote Lite Ver -->
+        <script src="/public/summurnote/summernote-lite.js"></script>
+        <script src="/public/summurnote/lang/summernote-ko-KR.js"></script>
+        <link rel="stylesheet" href="/public/summurnote/summernote-lite.css">
+    </head>
+    <body>
+        <%- include('../header.html') %>
+
+        <div class="content_wrap">
+            <div class="content-header">
+                <!-- Page Name -->
+                <h3>소스코드</h3>
+            </div>
+            <aside class="leftmenubar">
+                <h2>IT 개발</h2>
+                <ul>
+                    <li><a href="/board/list/portfolio/10">포트폴리오</a></li>
+                    <li><a href="/board/list/itdev/10">IT 개발일지</a></li>
+                    <li><a href="/board/list/sourcecode/10" class="current">소스코드</a></li>
+                </ul>
+            </aside>
+            <section id="cont" class="content">
+                <form class="writeform" id="writeform" method="post" action="">
+                    <div class="write-wrap">
+                        <div>
+                            <input type="text" name="content_tit" id="content_tit" value="<%= result.SOURCE_CODE_TITLE %>">
+                            <input type="hidden" name="sCode_no" value="<%= sCode_no %>">
+                            <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
+                            <input type="hidden" id="boardName" value="<%= name %>">
+                        </div>
+                        <div id="selLang">
+                            <span>사용언어 : </span>
+                            <select name="content_lang" id="content_lang">
+                                <option value="java">JAVA</option>
+                                <option value="clang">C / C++</option>
+                                <option value="csharp">C#</option>
+                                <option value="python">Python</option>
+                                <option value="fontDesign">HTML+CSS</option>
+                                <option value="jscript">JavaScript</option>
+                                <option value="php">PHP</option>
+                                <option value="jsp">JSP</option>
+                                <option value="etc">ETC</option>
+                            </select>
+                        </div>
+                        <textarea name="content_txt" id="content_txt"></textarea>
+                        <div class="btn_wrap">
+                            <input type="button" id="btnCancle" class="inp_btn" value="취소">
+                            <input type="button" id="btnModify" class="inp_btn" value="등록">
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+
+        <script>
+            $(function() {
+                let data = '<%- result.SOURCE_CODE_TEXT %>'
+                $('#content_txt').summernote('pasteHTML', data);
+            });
+        </script>
+    </body>
+</html>

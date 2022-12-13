@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>IT 개발일지 < CellMin</title>
+        <link rel="stylesheet" href="/public/css/content.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/74b74b886a.js" crossorigin="anonymous"></script>
+        <script src="/public/js/content.js" defer></script>
+        <script src="/public/js/view.js" defer></script>
+    </head>
+    <body>
+        <%- include('../header.html') %>
+
+        <div class="content_wrap">
+            <div class="content-header">
+                <!-- Page Name -->
+                <h3>IT 개발일지</h3>
+            </div>
+            <aside class="leftmenubar">
+                <h2>IT 개발</h2>
+                <ul>
+                    <li><a href="/board/list/portfolio/10">포트폴리오</a></li>
+                    <li><a href="/board/list/itdev/10"  class="current">IT 개발일지</a></li>
+                    <li><a href="/board/list/sourcecode/10">소스코드</a></li>
+                </ul>
+            </aside>
+            <section id="cont" class="content">
+                <<div class="view-wrap">
+                    <div>
+                        <input type="hidden" id="cont_no" name="cont_no" value="<%= result.IT_DEV_NO_PK %>">
+                        <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
+                        <input type="hidden" id="boardName" value="<%= name %>">
+                        <p id="cont_tit">제목 : <%= result.IT_DEV_TITLE %></p>
+                    </div>
+                    <div id="selLang">
+                        <% 
+                            const lang = {
+                                "java" : "JAVA",
+                                "clang" : "C / C++",
+                                "csharp" : "C#",
+                                "python" : "Python",
+                                "fontDesign" : "HTML&CSS",
+                                "jscript" : "JavaScript",
+                                "php" : "PHP",
+                                "jsp" : "JSP",
+                                "etc" : "ETC"
+                            }
+                        %>
+                        <p><span>사용언어 : </span><%= lang[result.IT_DEV_LANG] %></p>
+                    </div>
+                    <div id="content_txtview"><%- result.IT_DEV_TEXT %></div>
+                </div>
+            <%  if(SD.kind == "ADMIN") { %>
+                <div class="btn_wrap" id="btn_wrap">
+                    <input type="button" id="btnDelete" class="inp_btn" value="삭제">
+                    <input type="button" id="btnWrite" class="inp_btn" value="수정">
+                </div>
+            <%  } %>
+            </section>
+        </div>
+        <footer class="page">
+            <!-- Footer Part -->
+            <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정보찾기 < CellMin</title>
+    <link rel="stylesheet" href="/public/css/etc.css">
+    <script src="/public/js/findinfo.js"></script>
+</head>
+<body>
+    <header>
+        <!-- Header Part -->
+        <div class="top_menu_wrap">
+            <a href="/">
+                <img src="/public/img/logo.png" alt="LOGO">
+                <span>CellMin</span>
+            </a>
+            <ul>
+                <li><a href="/login">로그인</a></li>
+                <li><a href="/signup">회원가입</a></li>
+                <li><a href="/findinfo">아이디 / 비밀번호 찾기</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="findinfo-wrap">
+        <h1>회원정보 찾기</h1>
+        <span>아이디와 비밀번호를 찾으실 수 있도록 도와드리겠습니다</span>
+        <div id="findInfo-box">
+            <form id="findID_box" method="post">
+                <h2>아이디 찾기</h2>
+                <input type="text" name="userName" id="userName" placeholder="이름"><br>
+                <input type="text" name="userEmail" id="userEmail" placeholder="E-Mail"><br>
+                <input type="button" id="btnfindID" value="아이디 찾기">
+            </form>
+            <form id="findPWD_box" method="post">
+                <h2>비밀번호 찾기</h2>
+                <input type="text" name="userID" id="userID" placeholder="아이디"><br>
+                <input type="text" name="p_userEmail" id="p_userEmail" placeholder="E-Mail"><br>
+                <input type="button" id="btnfindPWD" value="비밀번호 찾기">
+            </form>
+        </div>
+    </div>
+
+    <footer class="page">
+        <!-- Footer Part -->
+        <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
+    </footer>
+</body>
+</html>
