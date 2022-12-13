@@ -28,8 +28,9 @@ app.use(passport.session());
 app.use(flash());
 
 // Server Start
-app.listen(process.env.PORT, () => {
-    console.log(`Port ${process.env.PORT} Started`);
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+    console.log(`Port ${PORT} Started`);
 });
 
 // DB Connection
@@ -79,7 +80,6 @@ const pageIndex = {
 
 // Main Index
 app.get(pageIndex.routePath, function (req, res) {
-    let portfolio, sourcecode, itdev, notice, freeBoard;
     client.query(pageIndex.portfolio(), function(portfolioerr, portfolio_result) {
         portfolioerr ? console.log("Index Portfolio Error")
         : (()=> {

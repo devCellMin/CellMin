@@ -17,9 +17,9 @@
             <!-- Header Part -->
             <div class="top_menu_wrap">
                 <ul>
-                    <li><a href="/login">로그인</a></li>
-                    <li><a href="/signup">회원가입</a></li>
-                    <li><a href="/findinfo">아이디 / 비밀번호 찾기</a></li>
+                    <li><a class="btnLogin" id="btnTMLogin">로그인</a></li>
+                    <li><a class="btnSignUp" id="btnTMSignUp">회원가입</a></li>
+                    <li><a class="btnFindInfo" id="btnTMFindInfo">아이디 / 비밀번호 찾기</a></li>
                 </ul>
             </div>
             <div class="submenu_back"></div>
@@ -30,9 +30,9 @@
                 </a>
                 <ul class="menubar">
                     <ul class="submenu_member">
-                        <li><a href="/login">로그인</a></li>
-                        <li><a href="/signup">회원가입</a></li>
-                        <li><a href="/findinfo">아이디 / 비밀번호 찾기</a></li>
+                        <li><a class="btnLogin" id="btnLogin">로그인</a></li>
+                        <li><a class="btnSignUp" id="btnSignUp">회원가입</a></li>
+                        <li><a class="btnFindInfo" id="btnFindInfo">아이디 / 비밀번호 찾기</a></li>
                     </ul>
                     <li><a href="/board/list/notice/10">공지사항</a>
                         <ul class="submenu">
@@ -64,6 +64,7 @@
         </header>
 
         <!-- Full Page Start -->
+        <input type="hidden" id="content_user" value="<%= SD.id %>">
         <div id="indexPage">
             <div id="indexMain" class="page">
                 <!-- Main Page -->
