@@ -10,22 +10,13 @@ const localStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
 const bcrypt = require('bcrypt');
 const flash = require("connect-flash");
-
-// DB Connection
-const client = mysql.createConnection({
-    user: 'root',
-    password: '!@#alstp9753',
-    database: 'db_cellmin'
-});
-const PORT = 8888;
+require('dotenv').config();
 
 const app = express();
 app.set('view engine', 'ejs');
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static("views"));
 app.use("/public", express.static(__dirname+"/public"));
-
 app.use(bodyParser.json());
 app.use(expressSession({
     secret : 'secretCode', 
@@ -35,6 +26,18 @@ app.use(expressSession({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
+// Server Start
+app.listen(process.env.PORT, () => {
+    console.log(`Port ${process.env.PORT} Started`);
+});
+
+// DB Connection
+const client = mysql.createConnection({
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME
+});
 
 // Set Tables and Pages Object
 const dbList = {
@@ -1342,29 +1345,3 @@ app.post(pageYoutube.modify_RoutePath, function (req, res) {
         : res.redirect(pageYoutube.redirect_RoutePath(10));
     });
 });
-
-
-
-
-
-// Server Start
-app.listen(PORT, () => {
-    console.log(`Port ${PORT} Started`);
-});
-
-// // Date2String Function
-// function leftPad(value) {
-//     if (value >= 10) {
-//         return value;
-//     }
-
-//     return `0${value}`;
-// }
-
-// function toStringByFormatting(source, delimiter = '-') {
-//     const year = source.getFullYear();
-//     const month = leftPad(source.getMonth() + 1);
-//     const day = leftPad(source.getDate());
-
-//     return [year, month, day].join(delimiter);
-// }
