@@ -44,7 +44,9 @@ window.onload = function() {
         if(btnTMLogin.innerText == "로그인") {
             window.location.href = "/login";
         }else {
-            window.location.href = "/logout";
+            if(confirm('로그아웃 하시겠습니까?')) {
+                window.location.href = "/logout";
+            }
         }
     }
 
@@ -66,7 +68,9 @@ window.onload = function() {
         if(btnLogin.innerText == "로그인") {
             window.location.href = "/login";
         }else {
-            window.location.href = "/logout";
+            if(confirm('로그아웃 하시겠습니까?')) {
+                window.location.href = "/logout";
+            }
         }
     }
 

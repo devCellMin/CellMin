@@ -467,14 +467,16 @@ app.get(pageNotice.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pageNotice.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req .params.items,
+                "authority" : req.query.authority || 1
             };
         })();
-
+        console.log(req.query.page)
+        console.log(typeof req.query.page)
+        console.log(NoticeBoard_Query.List(pagedata["start"], pagedata["items"]));
         client.query(NoticeBoard_Query.List(pagedata["start"], pagedata["items"]), function (list_err, list_result) {
             list_err ? console.log(`Getting Data Error ${list_err}`) 
             : (()=> {
@@ -613,11 +615,11 @@ app.get(pageFreeBoard.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pageFreeBoard.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req.params.items,
+                "authority" : req.query.authority || 1
             };
         })();
 
@@ -747,11 +749,11 @@ app.get(pagePortfolio.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pagePortfolio.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req.params.items,
+                "authority" : req.query.authority || 1
             };
         })();
 
@@ -879,11 +881,11 @@ app.get(pageItDevDiary.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pageItDevDiary.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req.params.items,
+                "authority" : req.query.authority || 1
             };
         })();
 
@@ -1012,11 +1014,11 @@ app.get(pageSourceCode.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pageSourceCode.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req.params.items,
+                "authority" : req.query.authority || 1
             };
         })();
 
@@ -1145,11 +1147,11 @@ app.get(pageGallery.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pageGallery.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req.params.items,
+                "authority" : req.query.authority || 1
             };
         })();
 
@@ -1277,11 +1279,11 @@ app.get(pageYoutube.list_RoutePath, function (req, res) {
             pagedata = {
                 "name" : pageYoutube.pageName,
                 "items": +req.params.items,
-                "cpage": req.query.page ?? 1,
+                "cpage": req.query.page || 1,
                 "tpage": (settings[0].cnt % req.params.items == 0) ? parseInt(settings[0].cnt / req.params.items) : parseInt(settings[0].cnt / req.params.items)+1,
                 "total": settings[0].cnt,
-                "start": (Number(req.query.page ?? 1) - 1) * req.params.items,
-                "authority" : req.query.authority ?? 1
+                "start": (Number(req.query.page || 1) - 1) * req.params.items,
+                "authority" : req.query.authority || 1
             };
         })();
 

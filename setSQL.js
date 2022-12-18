@@ -2,6 +2,7 @@
 // Before Start -> npm install mysql
 
 const mysql = require("mysql");
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const conn = mysql.createConnection({
@@ -48,6 +49,12 @@ const TB_Create = {
                 MEMBER_KIND VARCHAR(5) NOT NULL
             )`;
         queryStart(sql, tbList.membersTB);
+        const pwd = bcrypt.hashSync("1234", 10);
+        sql = `Insert Into ${tbList.membersTB} (MEMBER_ID, MEMBER_NAME, MEMBER_PWD, MEMBER_EMAIL, MEMBER_KIND)
+                Values('admin', 'SMS', '${pwd}', 'devcellmin@gamil.com', 'ADMIN')`;
+        conn.query(sql, (err, result)=> {
+            err ? console.log(err) : console.log(result);
+        });
     },
     NOTICE_TB: function() {
         sql = `Create table ${tbList.noticeTB}
@@ -135,10 +142,10 @@ const TB_Create = {
     }
 }
 
-// // Create All DB
-// Object.keys(tbList).forEach(tbname => {
-//     TB_Create[tbList[tbname]]();
-// })
+// Create All DB
+Object.keys(tbList).forEach(tbname => {
+    TB_Create[tbList[tbname]]();
+})
 
 // // Create Only One DB
 // TB_Create[tbList["portfolioTB"]]();
