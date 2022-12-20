@@ -11,38 +11,38 @@ $(function(){
         });
     }, 4000);
 
-    // Change CSS width 2nd Page
-    $(window).scroll(function(){
-        let windowWidth = $(window).width();
-        if($(window).scrollTop() > 500 && windowWidth > 1280) {
-            $("header").css("background-color", "#FFFFFF");
-            $("header").css("border-bottom", "2px solid lightgray");
-            $(".top_menu_wrap div").css("border-bottom", "1px solid #000000");
-            $(".top_menu_wrap>div>input").css("background-color", "transparent");
-            $(".top_menu_wrap>div>input::placeholder").css("color", "rgba(0, 0, 0, 1)"); // 적용안됨
-            $(".topsearchBtn i").css("color", "var(--jqtext-color)");
-            $(".top_menu_wrap>ul>li:not(:last-child)").css("border-right", "1px solid black");
-            $(".top_menu_wrap>ul>li>a").css("color", "var(--jqtext-color)");
-            $(".header_wrap>a>span").css("color", "var(--jqtext-color)");
-            $(".submenu > li > a").css("color", "var(--submenu-text-color)");
-            $(".header_wrap>ul>li>a").css("color", "var(--jqtext-color)");
-            $("#menuicon").css("color", "var(--jqtext-color)");
+    // // Change CSS width 2nd Page
+    // $(window).scroll(function(){
+    //     let windowWidth = $(window).width();
+    //     if($(window).scrollTop() > 500 && windowWidth > 1280) {
+    //         $("header").css("background-color", "#FFFFFF");
+    //         $("header").css("border-bottom", "2px solid lightgray");
+    //         $(".top_menu_wrap div").css("border-bottom", "1px solid #000000");
+    //         $(".top_menu_wrap>div>input").css("background-color", "transparent");
+    //         $(".top_menu_wrap>div>input::placeholder").css("color", "rgba(0, 0, 0, 1)"); // 적용안됨
+    //         $(".topsearchBtn i").css("color", "var(--jqtext-color)");
+    //         $(".top_menu_wrap>ul>li:not(:last-child)").css("border-right", "1px solid black");
+    //         $(".top_menu_wrap>ul>li>a").css("color", "var(--jqtext-color)");
+    //         $(".header_wrap>a>span").css("color", "var(--jqtext-color)");
+    //         $(".submenu > li > a").css("color", "var(--submenu-text-color)");
+    //         $(".header_wrap>ul>li>a").css("color", "var(--jqtext-color)");
+    //         $("#menuicon").css("color", "var(--jqtext-color)");
 
-        }else if(windowWidth > 1280) {
-            $("header").css("background-color", "transparent");
-            $("header").css("border-bottom", "none");
-            $(".top_menu_wrap div").css("border-bottom", "1px solid #FFFFFF");
-            $(".top_menu_wrap>div>input").css("background-color", "transparent");
-            $(".top_menu_wrap>div>input::placeholder").css("color", "rgba(255, 255, 255, 0.7)");
-            $(".topsearchBtn i").css("color", "var(--text-color)");
-            $(".top_menu_wrap>ul>li:not(:last-child)").css("border-right", "1px solid lightgray");
-            $(".top_menu_wrap>ul>li>a").css("color", "var(--text-color)");
-            $(".header_wrap>a>span").css("color", "var(--text-color)");
-            $(".submenu > li > a").css("color", "var(--submenu-text-color)");
-            $(".header_wrap>ul>li>a").css("color", "var(--text-color)");
-            $("#menuicon").css("color", "var(--text-color)");
-        }
-    });
+    //     }else if(windowWidth > 1280) {
+    //         $("header").css("background-color", "transparent");
+    //         $("header").css("border-bottom", "none");
+    //         $(".top_menu_wrap div").css("border-bottom", "1px solid #FFFFFF");
+    //         $(".top_menu_wrap>div>input").css("background-color", "transparent");
+    //         $(".top_menu_wrap>div>input::placeholder").css("color", "rgba(255, 255, 255, 0.7)");
+    //         $(".topsearchBtn i").css("color", "var(--text-color)");
+    //         $(".top_menu_wrap>ul>li:not(:last-child)").css("border-right", "1px solid lightgray");
+    //         $(".top_menu_wrap>ul>li>a").css("color", "var(--text-color)");
+    //         $(".header_wrap>a>span").css("color", "var(--text-color)");
+    //         $(".submenu > li > a").css("color", "var(--submenu-text-color)");
+    //         $(".header_wrap>ul>li>a").css("color", "var(--text-color)");
+    //         $("#menuicon").css("color", "var(--text-color)");
+    //     }
+    // });
 
     let once = null;
 

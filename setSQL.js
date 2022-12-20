@@ -51,7 +51,7 @@ const TB_Create = {
         queryStart(sql, tbList.membersTB);
         const pwd = bcrypt.hashSync("1234", 10);
         sql = `Insert Into ${tbList.membersTB} (MEMBER_ID, MEMBER_NAME, MEMBER_PWD, MEMBER_EMAIL, MEMBER_KIND)
-                Values('admin', 'SMS', '${pwd}', 'devcellmin@gamil.com', 'ADMIN')`;
+                Values('CellMin', 'SMS', '${pwd}', 'devcellmin@gamil.com', 'ADMIN')`;
         conn.query(sql, (err, result)=> {
             err ? console.log(err) : console.log(result);
         });

@@ -53,9 +53,9 @@
                             <li><a href="/board/list/sourcecode/10">소스코드</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Connect</a>
+                    <li><a href="#indexConnect">Connect</a>
                         <ul class="submenu">
-                            <li><a href="#">Connect</a></li>
+                            <li><a href="#indexConnect">Connect</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -69,9 +69,9 @@
             <div id="indexMain" class="page">
                 <!-- Main Page -->
                 <div id="mainSlide">
-                    <div style="background-image: url(/public/img/102229782_p0_master1200.jpg);"></div>
-                    <div style="background-image: url(/public/img/102229782_p1_master1200.jpg);"></div>
-                    <div style="background-image: url(/public/img/102229782_p2_master1200.jpg);"></div>
+                    <div style="background-image: url(/public/img/back1.jpg);"></div>
+                    <div style="background-image: url(/public/img/back2.jpg);"></div>
+                    <div style="background-image: url(/public/img/back3.jpg);"></div>
                 </div>
 
                 <div id="mainShortCut-wrap">
@@ -167,11 +167,39 @@
                             <%   })  %>
                             </ul>
                         </div>
+                        <div>
+                            <!-- IT 개발일지 -->
+                            <h2>IT 개발일지</h2>
+                            <ul class="it_diary">
+                            <%  if(itdev.length == 0) { %>
+                                <li class="contents">
+                                    <a href="#">
+                                        <span class="conNumber">0000</span>
+                                        게시글이 존재하지 않습니다.
+                                    </a>
+                                    <span class="date">0000-00-00</span>
+                                </li>
+                            <%  }   %> 
+                            <%  let cnt = 0;
+                                itdev.forEach((item)=> { 
+                                    if(cnt < 5) {%>
+                                <li class="contents">
+                                    <a href="/board/view/itdev/<%= item.IT_DEV_NO_PK %>">
+                                        <span class="conNumber"><%= item.IT_DEV_NO_PK %></span>
+                                        <%= item.IT_DEV_TITLE %>
+                                    </a>
+                                    <span class="date"><%= item.IT_DEV_DATE %></span>
+                                </li>
+                            <%          cnt++
+                                    }
+                                })  %>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="ITdev_content">
+                    <div id="pcITdev" class="ITdev_content">
                         <!-- IT 개발일지 -->
                         <h2>IT 개발일지</h2>
-                        <ul id="it-diary">
+                        <ul class="it_diary">
                         <%  if(itdev.length == 0) { %>
                             <li class="contents">
                                 <a href="#">
@@ -255,7 +283,7 @@
                 </div>
             </div>
 
-            <div id="indexConnect" class="page">
+            <div id="indexConnect" name="indexConnect" class="page">
                 <!-- Connect Page -->
                 <h2>Message &amp; Connect</h2>
                 <div class="connect-wrap">
@@ -289,39 +317,30 @@
                     <div class="connect_sns">
                         <ul>
                             <li>
-                                <a href="https://open.kakao.com/o/seDHR5wc" target="_blank">
+                                <h2>소통 링크</h2>
+                            </li>
+                            <li>
+                                <a id="go2kakao" target="_blank">
                                     <img src="/public/img/kakaoLogo.jpg" alt="">
                                     -&emsp;KaKao Talk
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <img src="/public/img/LineLogo.png" alt="">
-                                    -&emsp;Line
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
+                                <a id="go2insta" target="_blank">
                                     <img src="/public/img/instaLogo.png" alt="">
                                     -&emsp;Instargram
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a id="go2meta" target="_blank">
                                     <img src="/public/img/FacebookLogo.png" alt="">
                                     -&emsp;Facebook
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a id="go2twit" target="_blank">
                                     <img src="/public/img/TwitterLogo.png" alt="">
                                     -&emsp;Twitter
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img src="/public/img/TelegramLogo.jpg" alt="">
-                                    -&emsp;Telegram
                                 </a>
                             </li>
                         </ul>

@@ -72,4 +72,19 @@ window.onload = function() {
         }
     }
 
+    go2kakao.onclick = ()=> {
+        window.open("https://open.kakao.com/o/seDHR5wc");
+    }
+
+    go2insta.onclick = ()=> {
+        window.open("https://www.instagram.com/dev_austin_shin/");
+    }
+
+    go2meta.onclick = ()=> {
+        window.open("https://www.facebook.com/profile.php?id=100082235412265");
+    }
+
+    go2twit.onclick = ()=> {
+        window.open("https://twitter.com/Dev_Austin9753");
+    }
 };

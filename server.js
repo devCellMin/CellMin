@@ -82,6 +82,7 @@ const pageIndex = {
 
 // Main Index
 app.get(pageIndex.routePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Index PoolConnection Error : "+err);
@@ -237,22 +238,25 @@ passport.use(new localStrategy({
     });
 }));
 
-let sessionData = {id : "", kind : ""};
 // 세션에 id 저장
 passport.serializeUser((user, done) => {
     // console.log("serializeUser() 호출");
     // console.log(user);
-    sessionData.id = user.id;
-    sessionData.kind = user.kind;
     done(null, user);
 });
 // 세션에 저장된 id를 DB에서 검색
 passport.deserializeUser((user, done) => {
     // console.log("deserializeUser() 호출");
     // console.log(user);
-    sessionData.id = user.id;
-    sessionData.kind = user.kind;
-    done(null, user);
+    pool.getConnection((err, conn)=> {
+        if(err) {
+
+        } else {
+            conn.query("Select MEMBER_ID as id, MEMBER_KIND as kind From MEMBERS_TB Where MEMBER_ID = ?", [user.id], (dberror, result)=> {
+                done(null, result[0]);
+            });
+        } conn.release();
+    });
 });
 
 //로그인 유무 체크
@@ -308,8 +312,6 @@ function chk_Login(req, res, next){
 // Log out
 app.get(pageMembers.logout_RoutePath, function(req, res) {
     req.session.destroy(function(){
-        sessionData.id = "";
-        sessionData.kind = "";
         res.cookie('connect.sid','',{maxAge:0}) 
         res.redirect('/');
     });
@@ -502,6 +504,7 @@ const NoticeBoard_Query = {
 
 app.get(pageNotice.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Notice List Pool Connection Error : "+err);
@@ -535,6 +538,7 @@ app.get(pageNotice.list_RoutePath, function (req, res) {
 
 // Write Notice Board Contents
 app.get(pageNotice.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pageNotice.write_HTML, {SD : sessionData, name: pageNotice.pageName});
 });
 
@@ -555,6 +559,7 @@ app.post(pageNotice.write_RoutePath, function (req, res) {
 
 // View Notice Board Contents
 app.get(pageNotice.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View Notice Pool Connection Error : "+err);
@@ -578,6 +583,7 @@ app.get(pageNotice.view_RoutePath, function (req, res) {
 
 // Modify Notice Board Contents
 app.get(pageNotice.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify Notice_Get Pool Connection Error : "+err);
@@ -687,6 +693,7 @@ const FreeBoard_Query = {
 
 app.get(pageFreeBoard.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("List FreeBoard Pool Connection Error : "+err);
@@ -720,6 +727,7 @@ app.get(pageFreeBoard.list_RoutePath, function (req, res) {
 });
 
 app.get(pageFreeBoard.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pageFreeBoard.write_HTML, {SD : sessionData, name: pageFreeBoard.pageName});
 });
 
@@ -739,6 +747,7 @@ app.post(pageFreeBoard.write_RoutePath, function (req, res) {
 });
 
 app.get(pageFreeBoard.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View FreeBoard Pool Connection Error : "+ err);
@@ -762,6 +771,7 @@ app.get(pageFreeBoard.view_RoutePath, function (req, res) {
 
 // Modify Free Board Contents
 app.get(pageFreeBoard.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify FreeBoard_Get Pool Connection Error : "+ err);
@@ -872,6 +882,7 @@ const Portfolio_Query = {
 // Portfolio
 app.get(pagePortfolio.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("List Portfolio Pool Connection Error"+err);
@@ -905,6 +916,7 @@ app.get(pagePortfolio.list_RoutePath, function (req, res) {
 });
 
 app.get(pagePortfolio.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pagePortfolio.write_HTML, {SD : sessionData, name: pagePortfolio.pageName});
 });
 
@@ -924,6 +936,7 @@ app.post(pagePortfolio.write_RoutePath, function (req, res) {
 });
 
 app.get(pagePortfolio.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View Portfolio Pool Connection Error : "+err);
@@ -947,6 +960,7 @@ app.get(pagePortfolio.view_RoutePath, function (req, res) {
 
 // Modify Portfolio Board Contents
 app.get(pagePortfolio.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify Portfolio_Get Pool Connection Error : "+err);
@@ -1055,6 +1069,7 @@ const ItDevDiary_Query = {
 // IT Dev Diary
 app.get(pageItDevDiary.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("List ItDevDiary Pool Connection Error : "+err);
@@ -1088,6 +1103,7 @@ app.get(pageItDevDiary.list_RoutePath, function (req, res) {
 });
 
 app.get(pageItDevDiary.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pageItDevDiary.write_HTML, {SD : sessionData, name: pageItDevDiary.pageName});
 });
 
@@ -1107,6 +1123,7 @@ app.post(pageItDevDiary.write_RoutePath, function (req, res) {
 });
 
 app.get(pageItDevDiary.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View ItDevDiary Pool Connection Error : "+err);
@@ -1130,6 +1147,7 @@ app.get(pageItDevDiary.view_RoutePath, function (req, res) {
 
 // Modify ItDevDiary Board Contents
 app.get(pageItDevDiary.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify ItDevDiary_Get Pool Connection Error : "+err);
@@ -1239,6 +1257,7 @@ const SourceCode_Query = {
 // SourceCode
 app.get(pageSourceCode.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("List SourceCode Pool Connection Error : "+err);
@@ -1272,6 +1291,7 @@ app.get(pageSourceCode.list_RoutePath, function (req, res) {
 });
 
 app.get(pageSourceCode.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pageSourceCode.write_HTML, {SD : sessionData, name: pageSourceCode.pageName});
 });
 
@@ -1291,6 +1311,7 @@ app.post(pageSourceCode.write_RoutePath, function (req, res) {
 });
 
 app.get(pageSourceCode.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View SourceCode Pool Connection Error : "+err);
@@ -1314,6 +1335,7 @@ app.get(pageSourceCode.view_RoutePath, function (req, res) {
 
 // Modify SourceCode Board Contents
 app.get(pageSourceCode.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify SourceCode_Get Pool Connection Error : "+err);
@@ -1423,6 +1445,7 @@ const Gallery_Query = {
 
 app.get(pageGallery.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("List Gallery Pool Connection Error : "+err);
@@ -1456,6 +1479,7 @@ app.get(pageGallery.list_RoutePath, function (req, res) {
 });
 
 app.get(pageGallery.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pageGallery.write_HTML, {SD : sessionData, name: pageGallery.pageName});
 });
 
@@ -1475,6 +1499,7 @@ app.post(pageGallery.write_RoutePath, function (req, res) {
 });
 
 app.get(pageGallery.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View Gallery PoolConnection Error : "+err);
@@ -1498,6 +1523,7 @@ app.get(pageGallery.view_RoutePath, function (req, res) {
 
 // Modify Gallery Board Contents
 app.get(pageGallery.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify Gallery_Get Pool Connecntion Error : "+err);
@@ -1606,6 +1632,7 @@ const Youtube_Query = {
 
 app.get(pageYoutube.list_RoutePath, function (req, res) {
     let pagedata;
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("List Youtube Pool Connection Error : "+err);
@@ -1639,6 +1666,7 @@ app.get(pageYoutube.list_RoutePath, function (req, res) {
 });
 
 app.get(pageYoutube.write_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     res.render(pageYoutube.write_HTML, {SD : sessionData, name: pageYoutube.pageName});
 });
 
@@ -1658,6 +1686,7 @@ app.post(pageYoutube.write_RoutePath, function (req, res) {
 });
 
 app.get(pageYoutube.view_RoutePath, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("View Youtube Pool Connection Error : "+err);
@@ -1681,6 +1710,7 @@ app.get(pageYoutube.view_RoutePath, function (req, res) {
 
 // Modify Gallery Board Contents
 app.get(pageYoutube.modify_RoutePath, chk_Login, function (req, res) {
+    const sessionData = req.user || {id : "", kind : ""};
     pool.getConnection((err, conn)=> {
         if(err) {
             console.log("Modify Youtube_Get Pool Connection Error : "+err);
