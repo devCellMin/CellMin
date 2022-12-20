@@ -49,9 +49,10 @@ const TB_Create = {
                 MEMBER_KIND VARCHAR(5) NOT NULL
             )`;
         queryStart(sql, tbList.membersTB);
-        const pwd = bcrypt.hashSync("1234", 10);
+        const pwd = bcrypt.hashSync(`${process.env.ADMIN_PWD}`, 10);
         sql = `Insert Into ${tbList.membersTB} (MEMBER_ID, MEMBER_NAME, MEMBER_PWD, MEMBER_EMAIL, MEMBER_KIND)
-                Values('CellMin', 'SMS', '${pwd}', 'devcellmin@gamil.com', 'ADMIN')`;
+                Values('${process.env.ADMIN_ID}', '${process.env.ADMIN_NAME}', 
+                '${pwd}', '${process.env.ADMIN_EMAIL}', '${process.env.ADMIN_KIND}')`;
         conn.query(sql, (err, result)=> {
             err ? console.log(err) : console.log(result);
         });
