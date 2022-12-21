@@ -8,12 +8,6 @@
         <link rel="stylesheet" href="/public/css/etc.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/public/js/modifyInfo.js"></script>
-        <style>
-            .btnMembers {
-                font-size: 19px;
-                font-weight: bolder;
-            }
-        </style>
     </head>
     <body>
         <header>
@@ -26,7 +20,7 @@
                 <ul>
                     <li><a class="btnMembers" href="/logout" >로그아웃</a></li>
                     <li><a class="btnMembers" href="/modifyInfo/<%= result.id %>">회원정보변경</a></li>
-                    <li><a class="btnMembers"><%= result.id %>님 반갑습니다.</a></li>
+                    <li><a class="btnMembers"><%= result.id %>님</a></li>
                 </ul>
             </div>
         </header>

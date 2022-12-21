@@ -417,6 +417,9 @@ header {
 .contentsTB-type01 tbody td.col-tit {
     text-align: left;
     color: #000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .contentsTB-type01 tbody td.col-tit a {
@@ -566,15 +569,18 @@ header {
 }
 
 #cont_tit {
-    width: calc(100% - 50px);
-    padding: 10px 0 10px 0;
-    font-size: 25px;
+    width: 100%;
+    padding: 10px;
+    font-size: 22px;
     font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 #selLang>p {
-    padding: 10px 0;
-    font-size: 20px;
+    padding: 10px;
+    font-size: 17px;
     font-weight: bold;
 }
 
@@ -584,14 +590,16 @@ header {
 
 #content_txtview {
     padding: 10px;
+    font-size: 15px;
     min-height: 500px;
     width: 100%;
-    overflow: scroll;
-    overflow-y: hidden;
+    border-left: none;
+    border-right: none;
+    background-color: #FFFFFF;
     text-align: left;
 }
 #content_txtview>p {
-    white-space: pre-wrap;
+    word-break:break-all;
 }
 
 .content_wrap::after {
@@ -806,6 +814,10 @@ footer>p {
 
     .btn_wrap {
         padding: 0;
+    }
+
+    #content_txtview img {
+        max-width: 100%;
     }
 }
 

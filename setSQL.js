@@ -62,7 +62,7 @@ const TB_Create = {
             (
                 NOTICE_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 NOTICE_KIND VARCHAR(15) NOT NULL,
-                NOTICE_TITLE VARCHAR(30) NOT NULL,
+                NOTICE_TITLE VARCHAR(255) NOT NULL,
                 NOTICE_TEXT TEXT NOT NULL,
                 NOTICE_DATE VARCHAR(15) NOT NULL,
                 NOTICE_VIEW_CNT INT NOT NULL
@@ -74,7 +74,7 @@ const TB_Create = {
             (
                 FREE_BD_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 FREE_BD_USER VARCHAR(15) NOT NULL,
-                FREE_BD_TITLE VARCHAR(30) NOT NULL,
+                FREE_BD_TITLE VARCHAR(255) NOT NULL,
                 FREE_BD_TEXT TEXT NOT NULL,
                 FREE_BD_DATE VARCHAR(15) NOT NULL,
                 FREE_BD_VIEW_CNT INT NOT NULL
@@ -86,7 +86,7 @@ const TB_Create = {
             (
                 GALLERY_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 GALLERY_USER VARCHAR(15) NOT NULL,
-                GALLERY_TITLE VARCHAR(30) NOT NULL,
+                GALLERY_TITLE VARCHAR(255) NOT NULL,
                 GALLERY_TEXT TEXT NOT NULL,
                 GALLERY_DATE VARCHAR(15) NOT NULL,
                 GALLERY_VIEW_CNT INT NOT NULL
@@ -98,7 +98,7 @@ const TB_Create = {
             (
                 YOU_TUBE_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 YOU_TUBE_USER VARCHAR(15) NOT NULL,
-                YOU_TUBE_TITLE VARCHAR(30) NOT NULL,
+                YOU_TUBE_TITLE VARCHAR(255) NOT NULL,
                 YOU_TUBE_TEXT TEXT NOT NULL,
                 YOU_TUBE_DATE VARCHAR(15) NOT NULL,
                 YOU_TUBE_VIEW_CNT INT NOT NULL
@@ -110,7 +110,7 @@ const TB_Create = {
             (
                 PORTFOLIO_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 PORTFOLIO_LANG VARCHAR(15) NOT NULL,
-                PORTFOLIO_TITLE VARCHAR(30) NOT NULL,
+                PORTFOLIO_TITLE VARCHAR(255) NOT NULL,
                 PORTFOLIO_TEXT TEXT NOT NULL,
                 PORTFOLIO_DATE VARCHAR(15) NOT NULL,
                 PORTFOLIO_VIEW_CNT INT NOT NULL
@@ -122,7 +122,7 @@ const TB_Create = {
             (
                 IT_DEV_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 IT_DEV_LANG VARCHAR(15) NOT NULL,
-                IT_DEV_TITLE VARCHAR(30) NOT NULL,
+                IT_DEV_TITLE VARCHAR(255) NOT NULL,
                 IT_DEV_TEXT TEXT NOT NULL,
                 IT_DEV_DATE VARCHAR(15) NOT NULL,
                 IT_DEV_VIEW_CNT INT NOT NULL
@@ -134,7 +134,7 @@ const TB_Create = {
             (
                 SOURCE_CODE_NO_PK INT PRIMARY KEY AUTO_INCREMENT,
                 SOURCE_CODE_LANG VARCHAR(15) NOT NULL,
-                SOURCE_CODE_TITLE VARCHAR(30) NOT NULL,
+                SOURCE_CODE_TITLE VARCHAR(255) NOT NULL,
                 SOURCE_CODE_TEXT TEXT NOT NULL,
                 SOURCE_CODE_DATE VARCHAR(15) NOT NULL,
                 SOURCE_CODE_VIEW_CNT INT NOT NULL

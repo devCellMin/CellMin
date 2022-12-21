@@ -23,13 +23,13 @@
                 <h2>커뮤니티</h2>
                 <ul>
                     <li><a href="/board/list/free/10">자유게시판</a></li>
-                    <li><a href="/board/list/gallery/10" class="current">갤러리</a></li>
-                    <li><a href="/board/list/youTubeClip/10">Youtube Clip</a></li>
+                    <li><a href="/board/list/gallery/10">갤러리</a></li>
+                    <li><a href="/board/list/youTubeClip/10" class="current">Youtube Clip</a></li>
                 </ul>
             </aside>
 
             <section id="cont" class="content">
-                <<div class="view-wrap">
+                <div class="view-wrap">
                     <div>
                         <input type="hidden" id="cont_no" name="cont_no" value="<%= result.YOU_TUBE_NO_PK %>">
                         <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
@@ -38,7 +38,7 @@
                     </div>
                     <div id="content_txtview"><%- result.YOU_TUBE_TEXT %></div>
                 </div>
-            <%  if(result.YOU_TUBE_USER == SD.id) { %>
+            <%  if(result.YOU_TUBE_USER == SD.id || SD.kind == 'ADMIN') { %>
                 <div class="btn_wrap" id="btn_wrap">
                     <input type="button" id="btnDelete" class="inp_btn" value="삭제">
                     <input type="button" id="btnWrite" class="inp_btn" value="수정">
@@ -47,7 +47,7 @@
             </section>
         </div>
         <footer class="page">
-            <!-- Footer Part -->
+            <!-- Footer Part --> 
             <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
         </footer>
     </body>

@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>로그인 < CellMin</title>
         <link rel="stylesheet" href="/public/css/etc.css">
+        <script src="/public/js/login.js" defer></script>
     </head>
     <body>
         <header>
@@ -46,26 +47,5 @@
             <!-- Footer Part -->
             <p>Copyright 2022. MinnSeShin. All Right Reserved.</p>
         </footer>
-
-        <script>
-            window.onload = function() {
-                if(msg.value != "") {
-                    alert(msg.value);
-                }
-
-                btnSubmit.onclick = function() {
-                    if(userID.value.length == 0) {
-                        alert('아이디를 입력하세요.');
-                        return;
-                    } else if(userPWD.value.length == 0) {
-                        alert('비밀번호를 입력하세요.');
-                        return;
-                    }
-                    //alert('클릭하셨습니다.');
-                    login_box.submit();
-                };
-
-            };
-        </script>
     </body>
 </html>

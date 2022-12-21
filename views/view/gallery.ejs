@@ -28,16 +28,16 @@
                 </ul>
             </aside>
             <section id="cont" class="content">
-                <<div class="view-wrap">
+                <div class="view-wrap">
                     <div>
                         <input type="hidden" id="cont_no" name="cont_no" value="<%= result.GALLERY_NO_PK %>">
                         <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
                         <input type="hidden" id="boardName" value="<%= name %>">
                         <p id="cont_tit">제목 : <%= result.GALLERY_TITLE %></p>
                     </div>
-                    <div id="content_txtview"><%- result.GALLERY_TEXT %></ㅇ>
+                    <div  id="content_txtview"><%- result.GALLERY_TEXT %></div>
                 </div>
-            <%  if(result.GALLERY_USER == SD.id) { %>
+            <%  if(result.GALLERY_USER == SD.id || SD.kind == 'ADMIN') { %>
                 <div class="btn_wrap" id="btn_wrap">
                     <input type="button" id="btnDelete" class="inp_btn" value="삭제">
                     <input type="button" id="btnWrite" class="inp_btn" value="수정">

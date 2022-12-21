@@ -40,7 +40,7 @@
                     </div>
                     <div id="content_txtview"><%- result.FREE_BD_TEXT %></div>
                 </div>
-            <%  if(result.FREE_BD_USER == SD.id) { %>
+            <%  if(result.FREE_BD_USER == SD.id || SD.kind == 'ADMIN') { %>
                 <div class="btn_wrap" id="btn_wrap">
                     <input type="button" id="btnDelete" class="inp_btn" value="삭제">
                     <input type="button" id="btnWrite" class="inp_btn" value="수정">

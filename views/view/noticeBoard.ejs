@@ -9,7 +9,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/74b74b886a.js" crossorigin="anonymous"></script>
         <script src="/public/js/content.js" defer></script>
+        <script src="/public/js/summerNote.js" defer></script>
         <script src="/public/js/view.js" defer></script>
+        <!-- Summernote Lite Ver -->
+        <script src="/public/summurnote/summernote-lite.js"></script>
+        <script src="/public/summurnote/lang/summernote-ko-KR.js"></script>
+        <link rel="stylesheet" href="/public/summurnote/summernote-lite.css">
     </head>
     <body>
         <%- include('../header.html') %>
@@ -26,7 +31,7 @@
                 </ul>
             </aside>
             <section id="cont" class="content">
-                <<div class="view-wrap">
+                <div class="view-wrap">
                     <div>
                         <input type="hidden" id="cont_no" name="cont_no" value="<%= result.NOTICE_NO_PK %>">
                         <input type="hidden" id="content_user" name="content_user" value="<%= SD.id %>">
